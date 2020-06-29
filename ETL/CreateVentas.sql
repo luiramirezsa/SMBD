@@ -1,14 +1,14 @@
 USE [DW_Farmacia]
 GO
 
-/****** Object:  Table [dbo].[Ventas]    Script Date: 6/28/2020 4:34:40 PM ******/
+/****** Object:  Table [dbo].[HVentas]    Script Date: 6/28/2020 9:26:30 PM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[Ventas](
+CREATE TABLE [dbo].[HVentas](
 	[VentaId] [varchar](8) NOT NULL,
 	[ClienteCodigo] [varchar](8) NOT NULL,
 	[EmpleadoCodigo] [varchar](8) NOT NULL,
@@ -29,58 +29,58 @@ CREATE TABLE [dbo].[Ventas](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[Ventas] ADD  CONSTRAINT [DF_Ventas_CreadoFecha]  DEFAULT (getdate()) FOR [CreadoFecha]
+ALTER TABLE [dbo].[HVentas] ADD  CONSTRAINT [DF_Ventas_CreadoFecha]  DEFAULT (getdate()) FOR [CreadoFecha]
 GO
 
-ALTER TABLE [dbo].[Ventas] ADD  CONSTRAINT [DF_Ventas_CreadoPor]  DEFAULT ('ETL_Process') FOR [CreadoPor]
+ALTER TABLE [dbo].[HVentas] ADD  CONSTRAINT [DF_Ventas_CreadoPor]  DEFAULT ('ETL_Process') FOR [CreadoPor]
 GO
 
-ALTER TABLE [dbo].[Ventas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimCategorias] FOREIGN KEY([CategoriaCodigo])
+ALTER TABLE [dbo].[HVentas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimCategorias] FOREIGN KEY([CategoriaCodigo])
 REFERENCES [dbo].[DimCategorias] ([CategoriaCodigo])
 GO
 
-ALTER TABLE [dbo].[Ventas] CHECK CONSTRAINT [FK_Ventas_DimCategorias]
+ALTER TABLE [dbo].[HVentas] CHECK CONSTRAINT [FK_Ventas_DimCategorias]
 GO
 
-ALTER TABLE [dbo].[Ventas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimClientes] FOREIGN KEY([ClienteCodigo])
+ALTER TABLE [dbo].[HVentas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimClientes] FOREIGN KEY([ClienteCodigo])
 REFERENCES [dbo].[DimClientes] ([ClienteCodigo])
 GO
 
-ALTER TABLE [dbo].[Ventas] CHECK CONSTRAINT [FK_Ventas_DimClientes]
+ALTER TABLE [dbo].[HVentas] CHECK CONSTRAINT [FK_Ventas_DimClientes]
 GO
 
-ALTER TABLE [dbo].[Ventas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimDistritos] FOREIGN KEY([DistritoCodigo])
+ALTER TABLE [dbo].[HVentas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimDistritos] FOREIGN KEY([DistritoCodigo])
 REFERENCES [dbo].[DimDistritos] ([DistritoCodigo])
 GO
 
-ALTER TABLE [dbo].[Ventas] CHECK CONSTRAINT [FK_Ventas_DimDistritos]
+ALTER TABLE [dbo].[HVentas] CHECK CONSTRAINT [FK_Ventas_DimDistritos]
 GO
 
-ALTER TABLE [dbo].[Ventas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimEmpleados] FOREIGN KEY([EmpleadoCodigo])
+ALTER TABLE [dbo].[HVentas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimEmpleados] FOREIGN KEY([EmpleadoCodigo])
 REFERENCES [dbo].[DimEmpleados] ([EmpleadoCodigo])
 GO
 
-ALTER TABLE [dbo].[Ventas] CHECK CONSTRAINT [FK_Ventas_DimEmpleados]
+ALTER TABLE [dbo].[HVentas] CHECK CONSTRAINT [FK_Ventas_DimEmpleados]
 GO
 
-ALTER TABLE [dbo].[Ventas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimProductos] FOREIGN KEY([ProductoCodigo])
+ALTER TABLE [dbo].[HVentas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimProductos] FOREIGN KEY([ProductoCodigo])
 REFERENCES [dbo].[DimProductos] ([ProductoCodigo])
 GO
 
-ALTER TABLE [dbo].[Ventas] CHECK CONSTRAINT [FK_Ventas_DimProductos]
+ALTER TABLE [dbo].[HVentas] CHECK CONSTRAINT [FK_Ventas_DimProductos]
 GO
 
-ALTER TABLE [dbo].[Ventas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimProveedores] FOREIGN KEY([ProveedorCodigo])
+ALTER TABLE [dbo].[HVentas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimProveedores] FOREIGN KEY([ProveedorCodigo])
 REFERENCES [dbo].[DimProveedores] ([ProveedorCodigo])
 GO
 
-ALTER TABLE [dbo].[Ventas] CHECK CONSTRAINT [FK_Ventas_DimProveedores]
+ALTER TABLE [dbo].[HVentas] CHECK CONSTRAINT [FK_Ventas_DimProveedores]
 GO
 
-ALTER TABLE [dbo].[Ventas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimTiempo] FOREIGN KEY([TiempoId])
+ALTER TABLE [dbo].[HVentas]  WITH CHECK ADD  CONSTRAINT [FK_Ventas_DimTiempo] FOREIGN KEY([TiempoId])
 REFERENCES [dbo].[DimTiempo] ([TiempoId])
 GO
 
-ALTER TABLE [dbo].[Ventas] CHECK CONSTRAINT [FK_Ventas_DimTiempo]
+ALTER TABLE [dbo].[HVentas] CHECK CONSTRAINT [FK_Ventas_DimTiempo]
 GO
 
